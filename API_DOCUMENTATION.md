@@ -3,7 +3,7 @@
 ## Base URL
 
 ```
-http://localhost:5000/api
+http://localhost:5002/api
 ```
 
 ## Authentication Endpoints

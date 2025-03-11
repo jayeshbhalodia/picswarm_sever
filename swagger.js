@@ -52,7 +52,7 @@ All endpoints follow a consistent error response format:
         },
         servers: [
             {
-                url: 'http://localhost:5000',
+                url: 'http://localhost:5002',
                 description: 'Development server'
             },
             {
