@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "b0e3b0e3-b0e3-b0e3-b0e3-b0e3b0e3b0e3",
+		"name": "PicSwarm API",
+		"description": "Complete API collection for PicSwarm Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "register"]
+						},
+						"description": "Register a new user account"
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "login"]
+						},
+						"description": "Login to existing account"
+					}
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/logout",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "logout"]
+						},
+						"description": "Logout from current session"
+					}
+				},
+				{
+					"name": "Check Auth Status",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/check",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "check"]
+						},
+						"description": "Check if user is authenticated"
+					}
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/forgot-password",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "forgot-password"]
+						},
+						"description": "Request password reset email"
+					}
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/reset-password/:token",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "reset-password", ":token"],
+							"variable": [
+								{
+									"key": "token",
+									"value": "your-reset-token",
+									"description": "Password reset token"
+								}
+							]
+						},
+						"description": "Reset password using token"
+					}
+				}
+			]
+		},
+		{
+			"name": "User Profile",
+			"item": [
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/users/me",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "me"]
+						},
+						"description": "Get current user's profile"
+					}
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Smith\",\n    \"email\": \"john@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/profile",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "profile"]
+						},
+						"description": "Update user profile information"
+					}
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\": \"123456\",\n    \"newPassword\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/password",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "password"]
+						},
+						"description": "Change user password"
+					}
+				},
+				{
+					"name": "Update Profile Picture",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profilePicture\": \"https://example.com/profile.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/profile-picture",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "profile-picture"]
+						},
+						"description": "Update profile picture URL"
+					}
+				}
+			]
+		},
+		{
+			"name": "API Documentation",
+			"item": [
+				{
+					"name": "API Home",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api",
+							"host": ["{{baseUrl}}"],
+							"path": ["api"]
+						},
+						"description": "Get API information and documentation links"
+					}
+				},
+				{
+					"name": "Get Full Documentation",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/docs",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "docs"]
+						},
+						"description": "Get complete API documentation"
+					}
+				},
+				{
+					"name": "List All Endpoints",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/docs/endpoints",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "docs", "endpoints"]
+						},
+						"description": "Get list of all available endpoints"
+					}
+				},
+				{
+					"name": "Get Endpoint Documentation",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/docs/endpoint/auth/register",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "docs", "endpoint", "auth", "register"]
+						},
+						"description": "Get detailed documentation for a specific endpoint"
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [""]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+} 
